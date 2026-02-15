@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Origin Monorepo
 
-## Getting Started
+A full-stack application with Next.js frontend and NestJS backend in a single monorepo.
 
-First, run the development server:
+## 📁 Project Structure
+
+```
+origin/
+├── frontend/          # Next.js application (React + TypeScript + Tailwind)
+├── backend/           # NestJS API (Node.js + TypeScript)
+├── package.json       # Root workspace configuration
+└── .env.example       # Environment variables template
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js >= 18.0.0
+- npm >= 9.0.0
+
+### Installation
+
+Install all dependencies for both frontend and backend:
+
+```bash
+npm install
+```
+
+### Development
+
+Run both frontend and backend concurrently:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Or run them separately:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Frontend only (http://localhost:3000)
+npm run dev:frontend
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Backend only (http://localhost:4000)
+npm run dev:backend
+```
 
-## Learn More
+### Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Update the values as needed
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Available Scripts
 
-## Deploy on Vercel
+- `npm run dev` - Run both frontend and backend in development mode
+- `npm run dev:frontend` - Run only frontend dev server
+- `npm run dev:backend` - Run only backend dev server
+- `npm run build` - Build both projects
+- `npm run build:frontend` - Build frontend only
+- `npm run build:backend` - Build backend only
+- `npm run lint` - Lint both projects
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Frontend
+- **Framework**: Next.js 16
+- **UI Library**: React 19
+- **Styling**: Tailwind CSS 4
+- **Language**: TypeScript 5
+
+### Backend
+- **Framework**: NestJS 11
+- **Runtime**: Node.js
+- **Language**: TypeScript 5
+
+## 📝 API Endpoints
+
+The backend API runs on `http://localhost:4000`
+
+Default endpoint:
+- `GET /` - Returns "Hello World!"
+
+## 🤝 Contributing
+
+This is a monorepo managed with npm workspaces. When adding dependencies:
+
+```bash
+# Add to frontend
+npm install <package> --workspace=frontend
+
+# Add to backend
+npm install <package> --workspace=backend
+
+# Add to root (dev tools like concurrently)
+npm install <package> -D
+```
+
+## 📄 License
+
+Private
